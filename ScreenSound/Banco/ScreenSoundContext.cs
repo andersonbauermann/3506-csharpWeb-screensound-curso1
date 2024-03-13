@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ScreenSound.Modelos;
 
 namespace ScreenSound.Banco;
@@ -12,6 +11,8 @@ internal class ScreenSoundContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(connectionString);
+        optionsBuilder
+            .UseSqlServer(connectionString)
+            .UseLazyLoadingProxies();
     }
 }
